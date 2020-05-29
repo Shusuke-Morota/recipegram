@@ -1,0 +1,15 @@
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        recipegramers
+      </h1>
+    </div>
+  </div>
+</section>
+
+<% @users.each do |user| %>
+<%= attachment_image_tag user, :profile_image, fallback: "no-image.png" %>
+<!-- fallbackは何も画像が設定されてなかった時に〇〇（後述している）画像を表示させてくださいの意味となる -->
+<%= user.username %>
+<% end %>
