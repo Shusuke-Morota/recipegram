@@ -8,18 +8,37 @@
   </div>
 </section>
 
-<%= form_for @user do |f| %>
 
-<%= f.label :username %>
-<%= f.text_field :username %>
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+       <%= form_for @user do |f| %>
+        <div class="field">
+        	<%= f.label :username, "ユーザー名", class: "label" %>
+            <%= f.text_field :username, class: "input" %>
+        </div>
 
-<%= f.label :email %>
-<%= f.text_field :email %>
+        <div class="field">
+        	<%= f.label :email, "メールアドレス", class: "label" %>
+            <%= f.text_field :email, class: "input" %>
+        </div>
 
-<%= f.label :profile %>
-<%= f.text_field :profile %>
+        <div class="field">
+        	<%= f.label :profile, "プロフィール", class: "label" %>
+            <%= f.text_field :profile, class: "textarea" %>
+        </div>
 
-<%= f.label :profile_image %>
-<%= f.attachment_field :profile_image %>
-<%= f.submit %>
-	<% end %>
+        <div class="field">
+        	<%= f.label :profile_image, "プロフィール画像", class: "label" %>
+            <%= f.attachment_field :profile_image, class: "input" %>
+        </div>
+
+        <%= f.submit "更新", class: "button is-success" %>
+
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
