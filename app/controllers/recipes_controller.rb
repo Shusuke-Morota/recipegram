@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   def index
+  	@recipes = Recipe.all #レシピの一覧画面なので、@recipes(複数形)となり、で登録されている全ての情報を取ってくる為、モデル名.all(Recipe.all)となる。これでデータベースに登録されているレシピの情報が全て配列で@recipesに渡せる。
   end
 
   def show
@@ -18,6 +19,13 @@ class RecipesController < ApplicationController
   end
 
   def edit
+  	@recipe = Recipe.find(params[:id]) #これから編集したいレシピを１つだけ持ってくる。つまり、編集したいレシピの情婦を１つというのを@recipeという変数に入れました。
+  end
+
+  def update
+  	@recipe = Recipe.find(params[:id])
+  	@recipe.update(recipe_params)
+  	redirect_to recipe_path(@recipe)
   end
 
 
