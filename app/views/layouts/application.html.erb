@@ -39,10 +39,10 @@
         <div id="navbarExampleTransparentExample" class="navbar-menu">
           <div class="navbar-item">
             <%= link_to "レシピ一覧", recipes_path, class: "navbar-item button is-warning is-light" %>
-          </div>
+          </div> <!-- 一覧画面なのでrecipesとなる。-->
           <div class="navbar-item">
-            <%= link_to "レシピ投稿", new_recipe_path, class: "navbar-item button is-warning is-light" %>
-          </div>
+            <%= link_to "新規投稿", new_recipe_path, class: "navbar-item button is-warning is-light" %>
+          </div> 
 
           <div class="navbar-end">
             <div class="navbar-item">
@@ -51,7 +51,7 @@
                   <%= link_to "レシピグラマー一覧", users_path, class: " button is-warning is-light" %>
                 </p>
                 <p class="control">
-                  <%= link_to "マイページ", user_path(current_user), class: "button is-warning is-light" %>
+                  <%= link_to "マイページ", user_path(current_user), class: "button is-warning is-light" %> <!-- マイページに遷移する。１人の詳細画面に行くのでuser_pathとなり、尚且つログインしている人のマイページに行きたいので、current_userとなる。 -->
                 </p>
                 <p class="control">
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-warning is-light" %>

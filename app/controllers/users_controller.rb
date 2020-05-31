@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
   def index
   	@users = User.all
   end
@@ -9,12 +11,18 @@ class UsersController < ApplicationController
 
   def edit
   	@user = User.find(params[:id])
+    if @user != current_user
+      redirect_to users_path, alert: "不正なアクセスです"
+    end
   end
 
   def update
   	@user = User.find(params[:id])# findメソッドでどのユーザーを更新するかを見つけてきて@userに入れる
-  	@user.update(user_params)# @userを更新します
-  	redirect_to user_path(@user)# ユーザーの詳細画面に戻ります
+  	if @user.update(user_params)# @userを更新します
+  	redirect_to user_path(@user), notice: '更新に成功しました'# ユーザーの詳細画面に戻ります
+  else
+    render :edit
+  end
   end
 
   private
